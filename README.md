@@ -2,7 +2,7 @@
 
 ## Environment
 - Java 17
-- Gradle
+- Gradle 7.4.2
 - Spring Boot 2.7.0
 - Lombok
 - Mustache
