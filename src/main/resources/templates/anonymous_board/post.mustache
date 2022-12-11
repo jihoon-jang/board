@@ -1,0 +1,25 @@
+{{>anonymous_board/layout/header}}
+
+
+<div class="col-lg-10 mx-auto p-3 py-md-5">
+    <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+        <div class="align-items-center text-dark text-decoration-none">
+            <div class="h2">
+                {{#anonymousPost.isNotice}}
+                    <span class="badge rounded-pill text-bg-danger">공지</span>{{/anonymousPost.isNotice}} {{anonymousPost.title}}
+            </div>
+            <div>
+                {{anonymousPost.writer}}
+                {{anonymousPost.createdAt}}
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="postData">
+            {{anonymousPost.body}}
+        </div>
+    </main>
+</div>
+
+{{>anonymous_board/layout/footer}}
