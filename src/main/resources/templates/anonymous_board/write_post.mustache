@@ -1,0 +1,57 @@
+{{>anonymous_board/layout/header}}
+
+<div class="col-lg-10 mx-auto p-3 py-md-5">
+    <main>
+        <div class="row g-5">
+            <div class="col-md-7 col-lg-8">
+                <h4 class="mb-3">게시글 작성하기</h4>
+                <form class="needs-validation" novalidate>
+                    <div class="row">
+                        <div>
+                            <label for="anonymousPostTitle" class="form-label"></label>
+                            <input type="email" class="form-control" id="anonymousPostTitle" placeholder="제목을 입력하세요.">
+                        </div>
+                        <div class="mb-4">
+                            <label for="anonymousPostBody" class="form-label"></label>
+                            <textarea class="form-control" id="anonymousPostBody" rows="6"
+                                      placeholder="내용을 입력하세요."></textarea>
+                        </div>
+
+                        <div class="row pe-0 justify-content-end">
+                            <div class="col-1 px-0" style="width:60px">
+                                <button class="btn btn-outline-primary" type="button" onclick="createPost()">등록</button>
+                            </div>
+                            <div class="col-1 px-0" style="width:60px">
+                                <button class="btn btn-outline-secondary" type="button"
+                                        onclick="location.href='/anonymous-posts'">취소
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+    function createPost() {
+        fetch("/anonymous-posts", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                type: "normal",
+                title: document.getElementById("anonymousPostTitle").value,
+                body: document.getElementById("anonymousPostBody").value,
+            }),
+        })
+                .then((response) => response.json())
+                .then((data) => {
+                    window.location.href = "/anonymous-posts/" + data.data.id;
+                })
+    }
+</script>
+
+{{>anonymous_board/layout/footer}}

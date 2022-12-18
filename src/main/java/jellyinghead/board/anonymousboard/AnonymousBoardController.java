@@ -37,9 +37,16 @@ public class AnonymousBoardController {
         return mav;
     }
 
-    @PostMapping("/anonymous-post")
+    @PostMapping("/anonymous-posts")
     public ResponseEntity<Result<AnonymousPost>> postAnonymousPost(@RequestBody AnonymousPost anonymousPost) {
         return ResponseEntity.ok(Result.create(anonymousService.addAnonymousPost(anonymousPost)));
+    }
+
+    @GetMapping("/anonymous-posts/write")
+    public ModelAndView getAnonymousPostsWrite() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("/anonymous_board/write_post");
+        return mav;
     }
 
 }

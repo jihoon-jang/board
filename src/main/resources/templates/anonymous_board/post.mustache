@@ -1,6 +1,5 @@
 {{>anonymous_board/layout/header}}
 
-
 <div class="col-lg-10 mx-auto p-3 py-md-5">
     <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
         <div class="align-items-center text-dark text-decoration-none">
@@ -20,6 +19,14 @@
             {{anonymousPost.body}}
         </div>
     </main>
+
+    <div class="row pe-0 justify-content-end">
+        <div class="col-1 px-0" style="width:80px">
+            <button class="btn btn-outline-secondary" type="button"
+                    onclick="location.href='/anonymous-posts'">글 목록
+            </button>
+        </div>
+    </div>
 </div>
 
 {{>anonymous_board/layout/footer}}

@@ -26,6 +26,8 @@ public class AnonymousService {
     }
 
     public AnonymousPost addAnonymousPost(AnonymousPost anonymousPost) {
+        //TODO IP나 유저 식별 가능한 값으로 암호화하고 짤라서 내보내도록 변경
+        anonymousPost.setWriter("익명");
         AnonymousPostInfo anonymousPostInfo = anonymousPostInfoRepository.save(new AnonymousPostInfo(anonymousPost));
         return new AnonymousPost(anonymousPostInfo,
                 anonymousPostDataRepository.save(new AnonymousPostData(anonymousPostInfo.getId(), anonymousPost.getBody())));
